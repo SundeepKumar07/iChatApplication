@@ -1,21 +1,3 @@
-// const io = require('socket.io')(8000);
-
-// const users = {};
-
-// io.on("connection", socket => {
-//     // When a new user joins
-//     socket.on('new-user-joined', name => {
-//         users[socket.id] = name;
-//         socket.broadcast.emit('user-joined', name);
-//     });
-
-//     // When a message is sent
-//     socket.on('send', message => {
-//         socket.broadcast.emit('receive', { message: message, name: users[socket.id] });
-//     });
-// });
-
-    
 
 // server.js
 const io = require('socket.io')(8000, {
@@ -28,7 +10,7 @@ const io = require('socket.io')(8000, {
 const users = {};
 
 io.on('connection', socket => {
-    console.log('A new user connected: ' + socket.id);
+    // console.log('A new user connected: ' + socket.id);
 
     // When a new user joins
     socket.on('new-user-joined', name => {
@@ -40,4 +22,5 @@ io.on('connection', socket => {
     socket.on('send', message => {
         socket.broadcast.emit('receive', { message: message, name: users[socket.id] });
     });
+
 });
